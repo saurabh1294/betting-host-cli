@@ -65,9 +65,9 @@ function calculateDividends(bets) {
 
 	console.log(
 		`Win:${result[1]}:$${parseFloat((totalWinPoolSum - winBetCommission / 100 * totalWinPoolSum) / winnerOddsPoolSum).toFixed(2)}`,
-		`\nPlace:${result[1]}:$${parseFloat((totalPlacePoolSum - placeBetCommission / 100 * totalPlacePoolSum) / placeOddsPoolSum[0] / 3).toFixed(2)}`,
-		`\nPlace:${result[2]}:$${parseFloat((totalPlacePoolSum - placeBetCommission / 100 * totalPlacePoolSum) / placeOddsPoolSum[1] / 3).toFixed(2)}`,
-		`\nPlace:${result[3]}:$${parseFloat((totalPlacePoolSum - placeBetCommission / 100 * totalPlacePoolSum) / placeOddsPoolSum[2] / 3).toFixed(2)}`,
+		`\nPlace:${result[1]}:$${parseFloat((totalPlacePoolSum - placeBetCommission / 100 * totalPlacePoolSum) / placeOddsPoolSum[0] / (result.length-1)).toFixed(2)}`,
+		`\nPlace:${result[2]}:$${parseFloat((totalPlacePoolSum - placeBetCommission / 100 * totalPlacePoolSum) / placeOddsPoolSum[1] / (result.length-1)).toFixed(2)}`,
+		`\nPlace:${result[3]}:$${parseFloat((totalPlacePoolSum - placeBetCommission / 100 * totalPlacePoolSum) / placeOddsPoolSum[2] / (result.length-1)).toFixed(2)}`,
 		`\nExacta:${result[1]},${result[2]}:$${parseFloat((totalExactaPoolSum - exactaBetCommission / 100 * totalExactaPoolSum) / exactaOddsPoolSum).toFixed(2)}`
 	);
 }
