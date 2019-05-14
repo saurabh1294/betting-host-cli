@@ -15,7 +15,7 @@ rl.on('line', function(cmd) {
 });
 
 rl.on('close', function(cmd) {
-	console.log('\n\nOutput of the bets dataset is below : \n');
+	console.log('\n\nOutput of the dividends calculation for the bets dataset is below : \n');
 	calculateDividends(input);
 	process.exit(0);
 });
