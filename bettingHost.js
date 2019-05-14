@@ -24,7 +24,11 @@ rl.on('close', function(cmd) {
 function calculateDividends(bets) {
 	var result = bets[bets.length - 1].split(':');
 	var winBetString = `W:${result[1]}`;
-	var placeBetString = [`P:${result[1]}`, `P:${result[2]}`, `P:${result[3]}`];
+	var placeBetString = [];
+	for (var x = 1; x < result.length; x++) {
+		placeBetString.push(`P:${result[x]}`);
+	}
+	
 	var exactaBetString = `E:${result[1]},${result[2]}`;
 	var winBetCommission = 15;
 	var placeBetCommission = 12;
@@ -62,12 +66,12 @@ function calculateDividends(bets) {
 			totalExactaPoolSum += parseInt(winArr[winArr.length - 1]);
 		}
 	}
-
-	console.log(
-		`Win:${result[1]}:$${parseFloat((totalWinPoolSum - winBetCommission / 100 * totalWinPoolSum) / winnerOddsPoolSum).toFixed(2)}`,
-		`\nPlace:${result[1]}:$${parseFloat((totalPlacePoolSum - placeBetCommission / 100 * totalPlacePoolSum) / placeOddsPoolSum[0] / (result.length-1)).toFixed(2)}`,
-		`\nPlace:${result[2]}:$${parseFloat((totalPlacePoolSum - placeBetCommission / 100 * totalPlacePoolSum) / placeOddsPoolSum[1] / (result.length-1)).toFixed(2)}`,
-		`\nPlace:${result[3]}:$${parseFloat((totalPlacePoolSum - placeBetCommission / 100 * totalPlacePoolSum) / placeOddsPoolSum[2] / (result.length-1)).toFixed(2)}`,
-		`\nExacta:${result[1]},${result[2]}:$${parseFloat((totalExactaPoolSum - exactaBetCommission / 100 * totalExactaPoolSum) / exactaOddsPoolSum).toFixed(2)}`
-	);
+	
+	console.log(`Win:${result[1]}:$${parseFloat((totalWinPoolSum - winBetCommission / 100 * totalWinPoolSum) / winnerOddsPoolSum).toFixed(2)}`);
+	
+	for (var t=0; t < result.length - 1; t++) {
+		console.log(`Place:${result[t+1]}:$${parseFloat((totalPlacePoolSum - placeBetCommission / 100 * totalPlacePoolSum) / placeOddsPoolSum[t] / (result.length-1)).toFixed(2)}`);
+	}
+	
+	console.log(`Exacta:${result[1]},${result[2]}:$${parseFloat((totalExactaPoolSum - exactaBetCommission / 100 * totalExactaPoolSum) / exactaOddsPoolSum).toFixed(2)}`);
 }
