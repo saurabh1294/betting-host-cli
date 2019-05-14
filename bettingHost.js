@@ -7,7 +7,7 @@ var rl = readline.createInterface({
 	output: process.stdout
 });
 // Prompt user to input data in console.
-console.log("Please input bets dataset in command line. Press Ctrl C after inputting all data");
+console.log("Please input bets dataset in command line. Hit enter and then press Ctrl+C after inputting all data");
 rl.prompt();
 
 rl.on('line', function(cmd) {
