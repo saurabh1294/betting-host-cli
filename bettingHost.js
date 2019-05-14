@@ -66,7 +66,7 @@ function calculateDividends(bets) {
 			totalExactaPoolSum += parseInt(winArr[winArr.length - 1]);
 		}
 	}
-	
+
 	console.log(`Win:${result[1]}:$${parseFloat((totalWinPoolSum - winBetCommission / 100 * totalWinPoolSum) / winnerOddsPoolSum).toFixed(2)}`);
 	
 	for (var t=0; t < result.length - 1; t++) {
