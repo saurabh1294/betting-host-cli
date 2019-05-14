@@ -23,9 +23,9 @@ rl.on('close', function(cmd) {
 
 function calculateDividends(bets) {
 	var result = bets[bets.length - 1].split(':');
-	var winBetString = 'W:' + result[1];
-	var placeBetString = ['P:' + result[1], 'P:' + result[2], 'P:' + result[3]];
-	var exactaBetString = 'E:' + result[1] + ',' + result[2];
+	var winBetString = `W:${result[1]}`;
+	var placeBetString = [`P:${result[1]}`, `P:${result[2]}`, `P:${result[3]}`];
+	var exactaBetString = `E:${result[1]},${result[2]}`;
 	var winBetCommission = 15;
 	var placeBetCommission = 12;
 	var exactaBetCommission = 18;
@@ -64,15 +64,10 @@ function calculateDividends(bets) {
 	}
 
 	console.log(
-		'Win:' + result[1] + ':$' +
-		parseFloat((totalWinPoolSum - winBetCommission / 100 * totalWinPoolSum) / winnerOddsPoolSum).toFixed(2),
-		'\nPlace:' + result[1] + ':$' +
-		parseFloat((totalPlacePoolSum - placeBetCommission / 100 * totalPlacePoolSum) / placeOddsPoolSum[0] / 3).toFixed(2),
-		'\nPlace:' + result[2] + ':$' +
-		parseFloat((totalPlacePoolSum - placeBetCommission / 100 * totalPlacePoolSum) / placeOddsPoolSum[1] / 3).toFixed(2),
-		'\nPlace:' + result[3] + ':$' +
-		parseFloat((totalPlacePoolSum - placeBetCommission / 100 * totalPlacePoolSum) / placeOddsPoolSum[2] / 3).toFixed(2),
-		'\nExacta:' + result[1] + ',' + result[2] + ':$' +
-		parseFloat((totalExactaPoolSum - exactaBetCommission / 100 * totalExactaPoolSum) / exactaOddsPoolSum).toFixed(2)
+		`Win:${result[1]}:$${parseFloat((totalWinPoolSum - winBetCommission / 100 * totalWinPoolSum) / winnerOddsPoolSum).toFixed(2)}`,
+		`\nPlace:${result[1]}:$${parseFloat((totalPlacePoolSum - placeBetCommission / 100 * totalPlacePoolSum) / placeOddsPoolSum[0] / 3).toFixed(2)}`,
+		`\nPlace:${result[2]}:$${parseFloat((totalPlacePoolSum - placeBetCommission / 100 * totalPlacePoolSum) / placeOddsPoolSum[1] / 3).toFixed(2)}`,
+		`\nPlace:${result[3]}:$${parseFloat((totalPlacePoolSum - placeBetCommission / 100 * totalPlacePoolSum) / placeOddsPoolSum[2] / 3).toFixed(2)}`,
+		`\nExacta:${result[1]},${result[2]}:$${parseFloat((totalExactaPoolSum - exactaBetCommission / 100 * totalExactaPoolSum) / exactaOddsPoolSum).toFixed(2)}`
 	);
 }
